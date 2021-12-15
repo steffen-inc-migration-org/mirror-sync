@@ -3,8 +3,6 @@ description: 'Action to synchronize repositories, including bidirectional synchr
 inputs:
   remote-repository-url:
     required: true
-  remote-token:
-    required: true
   git-user-email:
     description: 'Email address used for merge commits'
     default: '41898282+github-actions[bot]@users.noreply.github.com'
@@ -27,7 +25,7 @@ runs:
 
     - name: Add remote repository to remotes
       shell: bash
-      run: git remote add source https://${{ inputs.remote-token }}@${{ inputs.remote-repository-url }}
+      run: git remote add remote ${{ inputs.remote-repository-url }}
         
     - name: Run mirror-sync.sh
       shell: bash
