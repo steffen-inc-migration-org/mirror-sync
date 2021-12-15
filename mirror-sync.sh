@@ -1,7 +1,7 @@
 #!/bin/bash
 git fetch --all
 
-remote_branches=$(git branch --all | grep remotes/source/)
+remote_branches=$(git branch --all | grep remotes/remote/)
 
 echo "Remote branches:"
 echo "$remote_branches"
@@ -9,7 +9,7 @@ echo "$remote_branches"
 # Loop through all remote branches
 for remote_branch_ref in $remote_branches; do
   # Get the remote branch name
-  remote_branch_name=${remote_branch_ref#remotes/source/}
+  remote_branch_name=${remote_branch_ref#remotes/remote/}
   
   # Checkout if remote branch exists on mirror
   git rev-parse --verify remotes/origin/"$remote_branch_name"
